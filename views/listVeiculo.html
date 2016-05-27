@@ -1,0 +1,28 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Lista de veiculos cadastrados</h3>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Placa</th>
+							<th>Condutor</th>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="veiculo in VeiculoCtrl.veiculos">
+								<td>{{veiculo.marca}}</td>
+								<td>{{veiculo.modelo}}</td>
+								<td>{{veiculo.placa}}</td>
+								<td>{{veiculo.condutor}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Cadastro</h3>
+				{{form.veiculo}}
+				<form>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput">Marca</label>
+				    <input type="text" class="form-control" ng-model="form.veiculo.marca">
+				  </fieldset>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput2">Modelo</label>
+				    <input type="text" class="form-control" ng-model="form.veiculo.modelo">
+				  </fieldset>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput2">Placa</label>
+				    <input type="text" class="form-control" ng-model="form.veiculo.placa">
+				  </fieldset>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput2">Nome Condutor</label>
+				    <input type="text" class="form-control" ng-model="form.veiculo.condutor">
+				  </fieldset>
+				  <button class="btn btn-primary" type="sumit" 
+				  ng-click="VeiculoCtrl.add(form.veiculo)">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="VeiculoCtrl.limpar()">Cancelar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

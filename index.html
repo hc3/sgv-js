@@ -3,56 +3,78 @@
 <head>
 	<title>SGV</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<style type="text/css">
-	.sidebar {
-	    position: fixed;
-	    top: 51px;
-	    bottom: 0;
-	    left: 0;
-	    z-index: 1000;
-	    display: block;
-	    padding: 20px;
-	    overflow-x: hidden;
-	    overflow-y: auto;
-	    background-color: #f5f5f5;
-	    border-right: 1px solid #eee;
-	}
-	</style>
+	<link rel="stylesheet" href="\css\my.css">
 </head>
-<body>
-<!-- BARA INICIAL DE NAVEGACAO -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a href="" class="navbar-brand">
-					Dashboar-SGV
-				</a>
-			</div>
+<body ng-app="">
+	<div id="wrapper">
+	<!-- BARA INICIAL DE NAVEGACAO -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a href="" class="navbar-brand">
+						Dashboard-SGV
+					</a>
+				</div>
 
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">Home</a></li>
-					<li><a href="">Contato</a></li>
-					<li><a href="">Sair</a></li>
-				</ul>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="">Home</a></li>
+						<li><a href="">Contato</a></li>
+						<li><a href="">Sair</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	<!-- -->
+
+	<!-- MENU LATERAL -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<ul class="nav nav-sidebar">
+						<li class="active"><a href="">Veiculos</a></li>
+						<li class="active"><a href="">Inadiplência</a></li>
+						<li class="active"><a href="">Positivação</a></li>
+						<li class="active"><a href="">Volume</a></li>
+					</ul>
+				</div>			
 			</div>
 		</div>
-	</nav>
-<!-- -->
+	<!--  -->
 
-<!-- MENU LATERAL -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="">Geral</a></li>
-					<li class="active"><a href="">Inadiplência</a></li>
-					<li class="active"><a href="">Positivação</a></li>
-					<li class="active"><a href="">Volume</a></li>
-				</ul>
-			</div>			
+	<!-- CONTEUDO CENTRAL -->
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Cadastro</h3>
+						{{form.veiculo}}
+						<form>
+						  <fieldset class="form-group">
+						    <label for="formGroupExampleInput">Marca</label>
+						    <input type="text" class="form-control" ng-model="form.veiculo.marca">
+						  </fieldset>
+						  <fieldset class="form-group">
+						    <label for="formGroupExampleInput2">Modelo</label>
+						    <input type="text" class="form-control" ng-model="form.veiculo.modelo">
+						  </fieldset>
+						  <fieldset class="form-group">
+						    <label for="formGroupExampleInput2">Placa</label>
+						    <input type="text" class="form-control" ng-model="form.veiculo.placa">
+						  </fieldset>
+						  <fieldset class="form-group">
+						    <label for="formGroupExampleInput2">Nome Condutor</label>
+						    <input type="text" class="form-control" ng-model="form.veiculo.condutor">
+						  </fieldset>
+						  <button class="btn btn-primary" type="sumit" 
+						  ng-click="cadastrarVeiculo(form.veiculo)">Cadastrar</button>
+						  <button class="btn btn-danger" ng-click="limparFormVeiculo()">Cancelar</button>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-<!--  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 </body>
 </html>

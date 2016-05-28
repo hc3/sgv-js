@@ -38,14 +38,19 @@
 							class aria-expanded="true">
 								Veiculos
 							</a>
-						
 							<ul id="demo" class="collapse in" aria-expanded="true">
 								<li><a href="#/veiculoCad">Cadastrar</a></li>
 								<li><a href="#/veiculoList">Listar</a></li>
 							</ul>
 						</li>
-						<li class="active"><a href="">Inadiplência</a></li>
-						<li class="active"><a href="">Positivação</a></li>
+						<li>
+							<a>Lubrificação</a>
+							<ul>
+								<li><a href="#/lubriCad">Cadastrar</a></li>
+								<li><a href="#/lubriList">Listar</a></li>
+							</ul>
+						</li>
+						<li class="active"><a href="#/graficos">Gráficos</a></li>
 						<li class="active"><a href="">Volume</a></li>
 						                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -67,8 +72,13 @@
 	<!-- CONTEUDO CENTRAL -->
 		<data-ng-view></data-ng-view>
 	</div>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 	<script src="//code.angularjs.org/1.5.4/angular-route.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-morris-chart/1.2.0/angular-morris-chart.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 	<script src="assets\js\app.js"></script>
 </body>
 </html>

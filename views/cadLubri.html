@@ -1,0 +1,33 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Cadastro</h3>
+				{{form.lubri}}
+				<form>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput">Mês Referente</label>
+				    <input type="date" class="form-control" ng-model="form.lubri.data">
+				  </fieldset>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput2">Veiculo</label>
+				    <input type="text" class="form-control" ng-model="form.lubri.veiculo">
+				  </fieldset>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput2">Custo KM</label>
+				    <input type="number" class="form-control" ng-model="form.lubri.custoKm">
+				  </fieldset>
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput2">Média Km/L</label>
+				    <input type="number" class="form-control" ng-model="form.lubri.mediaKm">
+				  </fieldset>
+				  <button class="btn btn-primary" type="sumit" 
+				  ng-click="LubriCtrl.add(form.veiculo)">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="LubriCtrl.limpar()">Cancelar</button>
+				</form>
+				
+
+			</div>
+		</div>
+	</div>
+</div>

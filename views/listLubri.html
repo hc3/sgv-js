@@ -1,0 +1,28 @@
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Lista de lubrificações cadastradas</h3>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<th>Condutor</th>
+							<th>Custo</th>
+							<th>Média</th>
+							<th>Data</th>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="lubri in LubriCtrl.lubrificacoes">
+								<td>{{lubri.veiculo}}</td>
+								<td>{{lubri.custoKm}}</td>
+								<td>{{lubri.mediaKm}}</td>
+								<td>{{lubri.data}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

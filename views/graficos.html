@@ -1,16 +1,102 @@
-<div
-line-chart
-line-data='[
-    { y: "2006", a: 10},
-    { y: "2007", a: 75},
-    { y: "2008", a: 50},
-    { y: "2009", a: 75},
-    { y: "2010", a: 50},
-    { y: "2011", a: 75},
-    { y: "2012", a: 100}
-]'
-line-xkey='y'
-line-ykeys='["a", "b"]'
-line-labels='["Serie A", "Serie B"]'
-line-colors='["#31C0BE", "#c7254e" , "green" , "yellow" , "black"]'>
-</div>
+
+<div id="container" style="min-width: 310px; height: 400px; padding-top:55px; margin: 0 auto">abc</div>
+	<script type="text/javascript">
+$(document).ready(function() {
+    var motoristas = [
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.96",data:"JANEIRO"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.80",data:"JANEIRO"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.60",data:"JANEIRO"},
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.45",data:"FEVEREIRO"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.88",data:"FEVEREIRO"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.67",data:"FEVEREIRO"},
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.69",data:"MARÇO"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.35",data:"MARÇO"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.99",data:"MARÇO"},
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"6.10",data:"ABRIL"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"4.30",data:"ABRIL"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.90",data:"ABRIL"},
+    ];
+
+    function exibeMediaConsumoFinal(element,nome) {
+        var mediaKm = [];
+        var nomes = verificaNomes(element);
+        for(var i = 0; i < nomes.length; i++) {
+            for(var i = 0; i < element.length; i++) {
+                if(element[i].veiculo === nome) {
+                    mediaKm.push(parseFloat(element[i].mediaKm));
+                }
+            }
+        }
+        return mediaKm;
+    } 
+
+
+    function verificaNomes(element) {
+        var arr = [];
+        for(var i = 0; i < motoristas.length; i++) {
+            arr.push(motoristas[i].veiculo);
+        }
+        var nomes = arr.filter(function(el,i){
+            return arr.indexOf(el) == i;
+        });
+
+        return nomes;
+    }
+ 
+    function verificaMesses(element) {
+        var arr = [];
+        for(var i = 0; i < motoristas.length; i++) {
+            arr.push(motoristas[i].data);
+        }
+        var messes = arr.filter(function(el,i) {
+            return arr.indexOf(el) == i;
+        });
+
+        return messes;
+    }
+
+    $('#container').highcharts({
+        title: {
+            text: 'Consumo médio de combustível',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Fonte: RN Distribuidora',
+            x: -20
+        },
+        xAxis: {
+            categories: verificaMesses(motoristas)
+        },
+        yAxis: {
+            title: {
+                text: 'Consumo (KM/L)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'João',
+            data: exibeMediaConsumoFinal(motoristas,"JOÃO")
+        }, {
+            name: 'Astrogildo',
+            data: exibeMediaConsumoFinal(motoristas,"ASTROGILDO")
+        }, {
+            name: 'Rubêncio',
+            data: exibeMediaConsumoFinal(motoristas,"RUBÊNCIO")
+        }]
+    });
+});
+</script>
+

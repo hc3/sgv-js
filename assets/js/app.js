@@ -1,4 +1,4 @@
-angular.module("dashboard",['ngRoute','angular.morris-chart'])
+angular.module("dashboard",['ngRoute'])
 	
 	.config(function($routeProvider) {
 		$routeProvider
@@ -41,7 +41,8 @@ function LubrificacaoController() {
 		{veiculo:"ALEXSANDRO",custoKm:"0,58",mediaKm:"9,52",data:"JANEIRO"},
 		{veiculo:"MONTIVALDO",custoKm:"0,59",mediaKm:"3,54",data:"JANEIRO"},
 		{veiculo:"PAULO",custoKm:"0,54",mediaKm:"5,8",data:"JANEIRO"},
-	]
+	];
+	
 }
 
 function VeiculoController() {

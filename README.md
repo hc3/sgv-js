@@ -18,3 +18,11 @@ Criar um dashboard para acompanhamento de librificação dos veiculos um acompan
 <p>
 	esse é o modelo incial um sistema básico todo feito em MEAN para estudo da linguagem javascript.
 </p>
+
+## Bower
+<p>na data de 31/05/2016 foi adicionado o angular-datatables para integrar o angularJs ao plugin jquery datatables , a pasta bower_complenents não sera enviada para o github.</p>
+
+## Charts 
+<p>com o higthcharts os gráficos estão sendo gerados numa boa usando o js</p> 
+
+## 

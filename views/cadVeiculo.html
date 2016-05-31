@@ -3,27 +3,27 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3>Cadastro</h3>
-				{{form.veiculo}}
-				<form>
+				{{VeiculoCtrl.veiculo}}
+				<form name="form">
+				  <fieldset class="form-group">
+				    <label for="formGroupExampleInput2">Nome Condutor</label>
+				    <input type="text" class="form-control" ng-required  ng-model="VeiculoCtrl.veiculo.condutor">
+				  </fieldset>
 				  <fieldset class="form-group">
 				    <label for="formGroupExampleInput">Marca</label>
-				    <input type="text" class="form-control" ng-model="form.veiculo.marca">
+				    <input type="text" class="form-control" ng-required  ng-model="VeiculoCtrl.veiculo.marca">
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label for="formGroupExampleInput2">Modelo</label>
-				    <input type="text" class="form-control" ng-model="form.veiculo.modelo">
+				    <input type="text" class="form-control" ng-required  ng-model="VeiculoCtrl.veiculo.modelo">
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label for="formGroupExampleInput2">Placa</label>
-				    <input type="text" class="form-control" ng-model="form.veiculo.placa">
-				  </fieldset>
-				  <fieldset class="form-group">
-				    <label for="formGroupExampleInput2">Nome Condutor</label>
-				    <input type="text" class="form-control" ng-model="form.veiculo.condutor">
+				    <input type="text" class="form-control" ng-required minlength="7" maxlength="7" ng-pattern="regexPlaca" ng-model="form.veiculo.placa">
 				  </fieldset>
 				  <button class="btn btn-primary" type="sumit" 
-				  ng-click="VeiculoCtrl.add(form.veiculo)">Cadastrar</button>
-				  <button class="btn btn-danger" ng-click="VeiculoCtrl.limpar()">Cancelar</button>
+				  ng-click="VeiculoCtrl.add(VeiculoCtrl.veiculo)" ng-disabled="form.$valid">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="VeiculoCtrl.limpar(VeiculoCtrl.veiculo)">Cancelar</button>
 				</form>
 			</div>
 		</div>

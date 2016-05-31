@@ -1,4 +1,4 @@
-angular.module("dashboard",['ngRoute'])
+angular.module("dashboard",['ngRoute','datatables'])
 	
 	.config(function($routeProvider) {
 		$routeProvider
@@ -25,22 +25,33 @@ angular.module("dashboard",['ngRoute'])
 			.when('/graficos',{
 				templateUrl:"views/graficos.html",
 				controller:"LubrificacaoController",
-				controllerAs:"LubriCtrl"				
+				controllerAs:"ChartsController"				
 			});
 	})
 
 	.controller("VeiculoController",VeiculoController)
-	.controller("LubrificacaoController",LubrificacaoController);
+	.controller("LubrificacaoController",LubrificacaoController)
+	.controller("ChartsController",ChartsController);
+
+function ChartsController() {
+	
+}
 
 function LubrificacaoController() {
 	var vm = this;
 	vm.lubrificacoes = [
-		{veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5,96",data:"JANEIRO"},
-		{veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5,80",data:"JANEIRO"},
-		{veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5,60",data:"JANEIRO"},
-		{veiculo:"ALEXSANDRO",custoKm:"0,58",mediaKm:"9,52",data:"JANEIRO"},
-		{veiculo:"MONTIVALDO",custoKm:"0,59",mediaKm:"3,54",data:"JANEIRO"},
-		{veiculo:"PAULO",custoKm:"0,54",mediaKm:"5,8",data:"JANEIRO"},
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.96",data:"JANEIRO"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.80",data:"JANEIRO"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.60",data:"JANEIRO"},
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.45",data:"FEVEREIRO"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.88",data:"FEVEREIRO"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.67",data:"FEVEREIRO"},
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.69",data:"MARÇO"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.35",data:"MARÇO"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.99",data:"MARÇO"},
+        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"6.10",data:"ABRIL"},
+        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"4.30",data:"ABRIL"},
+        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.90",data:"ABRIL"},
 	];
 	
 }
@@ -65,7 +76,10 @@ function VeiculoController() {
 	}
 
 	vm.limpar = limpar;
-	function limpar() {
-		vm.form = {};
+	function limpar(veiculo) {
+		
 	}
+
+	vm.regexPlaca = /[a-z]{3}-?\d{4}/;
+
 }

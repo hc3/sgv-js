@@ -1,20 +1,30 @@
 
-<div id="container" style="min-width: 310px; height: 400px; padding-top:55px; margin: 0 auto">abc</div>
-	<script type="text/javascript">
+<div id="container" style="min-width: 310px; height: 400px; padding-top:55px; margin: 0 auto"></div>
+
+<script type="text/javascript">
 $(document).ready(function() {
+    //OS DADOS DOS MOTORISTAS VEM DE UMA REQ AJAX
     var motoristas = [
         {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.96",data:"JANEIRO"},
         {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.80",data:"JANEIRO"},
         {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.60",data:"JANEIRO"},
+        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"5.40",data:"JANEIRO"},
+        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.70",data:"JANEIRO"},
         {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.45",data:"FEVEREIRO"},
         {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.88",data:"FEVEREIRO"},
         {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.67",data:"FEVEREIRO"},
+        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"5.40",data:"FEVEREIRO"},
+        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.20",data:"FEVEREIRO"},
         {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.69",data:"MARÇO"},
         {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.35",data:"MARÇO"},
         {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.99",data:"MARÇO"},
+        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"6.40",data:"MARÇO"},
+        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.90",data:"MARÇO"},
         {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"6.10",data:"ABRIL"},
         {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"4.30",data:"ABRIL"},
         {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.90",data:"ABRIL"},
+        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"5.60",data:"ABRIL"},
+        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.88",data:"ABRIL"},
     ];
 
     function exibeMediaConsumoFinal(element,nome) {
@@ -30,11 +40,10 @@ $(document).ready(function() {
         return mediaKm;
     } 
 
-
     function verificaNomes(element) {
         var arr = [];
-        for(var i = 0; i < motoristas.length; i++) {
-            arr.push(motoristas[i].veiculo);
+        for(var i = 0; i < element.length; i++) {
+            arr.push(element[i].veiculo);
         }
         var nomes = arr.filter(function(el,i){
             return arr.indexOf(el) == i;
@@ -45,8 +54,8 @@ $(document).ready(function() {
  
     function verificaMesses(element) {
         var arr = [];
-        for(var i = 0; i < motoristas.length; i++) {
-            arr.push(motoristas[i].data);
+        for(var i = 0; i < element.length; i++) {
+            arr.push(element[i].data);
         }
         var messes = arr.filter(function(el,i) {
             return arr.indexOf(el) == i;
@@ -95,6 +104,12 @@ $(document).ready(function() {
         }, {
             name: 'Rubêncio',
             data: exibeMediaConsumoFinal(motoristas,"RUBÊNCIO")
+        }, {
+            name: 'Gildezio',
+            data: exibeMediaConsumoFinal(motoristas,"GILDEZIO")
+        },  {
+            name: 'Galdêncio',
+            data: exibeMediaConsumoFinal(motoristas,"GALDÊNCIO")
         }]
     });
 });

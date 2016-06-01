@@ -18,8 +18,8 @@ app.use(methodOverride());                                      // simulate DELE
 
 
 // routes ===================================================================================================
-var clienteRoute = require('./routes/cliente.js')(app);
-var servicoRoute = require('./routes/servico.js')(app);
+var clienteRoute = require('./routes/veiculo.js')(app);
+
 
 
 // MongoDB configuration ====================================================================================

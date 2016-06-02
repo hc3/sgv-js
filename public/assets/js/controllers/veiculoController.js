@@ -9,25 +9,15 @@ function VeiculoController(VeiculoService) {
 
 	vm.titulo = "";
 	vm.veiculos = [];
+
 	function alteraVeic() {
 
 	}
 
-	reload();
-
-	function reload() {
-		return buscaVeic().then(function() {
-			console.log("listando");
-		});
-	}
+	buscaVeic();
 
 	function buscaVeic() {
-
-		return VeiculoService.getAll()
-		.then(function(data){
-			vm.veiculos = data;
-			return vm.veiculos;
-		});
+		VeiculoService.getAll();
 	}
 
 	function buscaTodosVeic() {
@@ -41,7 +31,5 @@ function VeiculoController(VeiculoService) {
 	function removeVeic() {
 		
 	}
-
-	vm.buscaVeic();
 
 };

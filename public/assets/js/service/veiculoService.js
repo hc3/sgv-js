@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dashboard')
-	.service('VeiculoService', VeiculoService);
+	.factory('VeiculoService', VeiculoService);
 
 function VeiculoService($http) {
 
@@ -13,16 +13,14 @@ function VeiculoService($http) {
 
 	function getAll() {
 		const url = "/api/veiculos";
-		const method = "GET";
-		$http({
-			url:url,
-			method:method
-		})
-		.success(function(data){
-			return data;
-		})
-		error(function(err){
-			console.log("erro:", err);
-		});
+		$http.get(url)
+			.then(function(data){
+				console.log(data.data);
+				return data.data;
+			})
+			.catch(function(err){
+				console.log(err);
+			})
+
 	}
 }

@@ -54,7 +54,7 @@ function LubrificacaoController() {
 function VeiculoController() {
 	var vm = this;
 	vm.veiculos = [
-		{marca:"FORD",modelo:"CARGO 17.23",placa:"PFI-8891",condutor:"JOÃO"},
+		{"marca":"FORD",modelo:"CARGO 17.23",placa:"PFI-8891",condutor:"JOÃO"},
 		{marca:"FORD",modelo:"CARGO 17.23",placa:"PJM-9811",condutor:"ASTROGILDO"},
 		{marca:"FORD",modelo:"CARGO 17.23",placa:"KTO-1022",condutor:"RUBÊNCIO"},
 		{marca:"VW",modelo:"8150",placa:"MLC-1022",condutor:"ALEXSANDRO"},

@@ -3,27 +3,27 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3>Cadastro</h3>
-				{{VeiculoCtrl.veiculo}}
+				{{VeiculoController.veiculo}}
 				<form name="form">
 				  <fieldset class="form-group">
 				    <label for="formGroupExampleInput2">Nome Condutor</label>
-				    <input type="text" class="form-control" ng-required  ng-model="VeiculoCtrl.veiculo.condutor">
+				    <input type="text" class="form-control" ng-required  ng-model="VeiculoController.veiculo.condutor">
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label for="formGroupExampleInput">Marca</label>
-				    <input type="text" class="form-control" ng-required  ng-model="VeiculoCtrl.veiculo.marca">
+				    <input type="text" class="form-control" ng-required  ng-model="VeiculoController.veiculo.marca">
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label for="formGroupExampleInput2">Modelo</label>
-				    <input type="text" class="form-control" ng-required  ng-model="VeiculoCtrl.veiculo.modelo">
+				    <input type="text" class="form-control" ng-required  ng-model="VeiculoController.veiculo.modelo">
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label for="formGroupExampleInput2">Placa</label>
 				    <input type="text" class="form-control" ng-required minlength="7" maxlength="7" ng-pattern="regexPlaca" ng-model="form.veiculo.placa">
 				  </fieldset>
 				  <button class="btn btn-primary" type="sumit" 
-				  ng-click="VeiculoCtrl.add(VeiculoCtrl.veiculo)" ng-disabled="form.$valid">Cadastrar</button>
-				  <button class="btn btn-danger" ng-click="VeiculoCtrl.limpar(VeiculoCtrl.veiculo)">Cancelar</button>
+				  ng-click="VeiculoController.add(VeiculoController.veiculo)" ng-disabled="form.$valid">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="VeiculoController.limpar(VeiculoController.veiculo)">Cancelar</button>
 				</form>
 			</div>
 		</div>

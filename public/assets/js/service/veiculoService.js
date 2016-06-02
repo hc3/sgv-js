@@ -1,11 +1,28 @@
-(function() {
-	'use strict';
+'use strict';
 
-	angular.module('dashboad')
-		.service('VeiculoService', VeiculoService);
+angular.module('dashboard')
+	.service('VeiculoService', VeiculoService);
 
-function VeiculoService() {
+function VeiculoService($http) {
 
+	var service = {
+		getAll:getAll
+	};
+
+	return service;
+
+	function getAll() {
+		const url = "/api/veiculos";
+		const method = "GET";
+		$http({
+			url:url,
+			method:method
+		})
+		.success(function(data){
+			return data;
+		})
+		error(function(err){
+			console.log("erro:", err);
+		});
+	}
 }
-
-})();

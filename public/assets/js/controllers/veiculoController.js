@@ -1,26 +1,33 @@
-(function() {
-	'use strict';
+'use strict';
 
-	angular.module('dashboard')
-		.controller('VeiculoController', VeiculoController);
+angular.module('dashboard')
+	.controller('VeiculoController', VeiculoController);
 
-function VeiculoController() {
+function VeiculoController(VeiculoService) {
 
 	var vm = this;
+
 	vm.titulo = "";
-
-	vm.alteraVeic = alteraVeic
-	vm.buscaVeic = buscaVeic;
-	vm.buscaTodosVeic = buscaTodosVeic;
-	vm.cadVeic = cadVeic;
-	vm.removeVeic = removeVeic;
-
+	vm.veiculos = [];
 	function alteraVeic() {
 
 	}
 
+	reload();
+
+	function reload() {
+		return buscaVeic().then(function() {
+			console.log("listando");
+		});
+	}
+
 	function buscaVeic() {
 
+		return VeiculoService.getAll()
+		.then(function(data){
+			vm.veiculos = data;
+			return vm.veiculos;
+		});
 	}
 
 	function buscaTodosVeic() {
@@ -35,6 +42,6 @@ function VeiculoController() {
 		
 	}
 
-};
+	vm.buscaVeic();
 
-})();
+};

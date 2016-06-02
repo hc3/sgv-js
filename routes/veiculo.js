@@ -4,7 +4,7 @@ var Veiculo = require('../models/veiculo.js');
 
 module.exports = function(app) {
 
-	buscarVeiculos = function(req,res) {
+	var buscarVeiculos = function(req,res) {
 		console.log("GET - /API/veiculos");
 
 		return Veiculo.find(function(err,veiculo) {
@@ -18,7 +18,7 @@ module.exports = function(app) {
 		});
 	};
 
-	buscarVeiculoPorId = function(req,res) {
+	var buscarVeiculoPorId = function(req,res) {
 		console.log("GET - /API/veiculos:id");
 		var id = req.params.id;
 		return Veiculo.findById({_id:id},function(err,veiculo){
@@ -36,7 +36,7 @@ module.exports = function(app) {
 		});
 	};
 
-	removeVeiculo = function(req,res) {
+	var removeVeiculo = function(req,res) {
 		console.log("DELETE - /API/veiculos:id");
 		var id = req.params.id;
 		return Veiculo.findById({_id:id},function(err,veiculo) {
@@ -57,7 +57,7 @@ module.exports = function(app) {
 		})
 	};
 
-	adicionarVeiculo = function(req,res) {
+	var adicionarVeiculo = function(req,res) {
 		console.log("POST - /API/veiculo");
 
 		var veiculo = new Veiculo(req.body);

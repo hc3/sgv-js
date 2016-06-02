@@ -31,7 +31,15 @@ angular.module("dashboard",['ngRoute','datatables'])
 
 	.controller("VeiculoController",VeiculoController)
 	.controller("LubrificacaoController",LubrificacaoController)
-	.controller("ChartsController",ChartsController);
+	.controller("ChartsController",ChartsController)
+	.service("VeiculoService",VeiculoService);
+
+function VeiculoService() {
+
+	this.listaVeiculos = function() {
+		return $http.get("/api/veiculos");
+	};
+}
 
 function ChartsController() {
 	
@@ -39,20 +47,7 @@ function ChartsController() {
 
 function LubrificacaoController() {
 	var vm = this;
-	vm.lubrificacoes = [
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.96",data:"JANEIRO"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.80",data:"JANEIRO"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.60",data:"JANEIRO"},
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.45",data:"FEVEREIRO"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.88",data:"FEVEREIRO"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.67",data:"FEVEREIRO"},
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.69",data:"MARÇO"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.35",data:"MARÇO"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.99",data:"MARÇO"},
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"6.10",data:"ABRIL"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"4.30",data:"ABRIL"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.90",data:"ABRIL"},
-	];
+	vm.lubrificacoes = [];
 	
 }
 

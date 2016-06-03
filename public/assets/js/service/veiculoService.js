@@ -19,4 +19,8 @@ function VeiculoService($http) {
 		const url = "/api/veiculos/";
 		return $http.delete(url+veiculo._id,{params:{id:veiculo._id}});
 	}
+
+	this.update = function(veiculo) {
+		
+	}
 }

@@ -9,27 +9,48 @@ function VeiculoController(VeiculoService) {
 
 	vm.titulo = "";
 	vm.veiculos = [];
+	vm.cadVeic = cadVeic;
+	vm.removeVeic = removeVeic;
+	vm.alteraVeic = alteraVeic;
+	vm.regexPlaca = /[a-z]{3}-?\d{4}/;
 
-	function alteraVeic() {
+	function loadVeiculos() {
+		VeiculoService.getAll().success(function(data){
+			vm.veiculos = data;
+		})
+		.error(function(data,status) {
+			console.log(data);
+		});
+	}
+
+	function cadVeic(veiculo) {
+
+		VeiculoService.insert(veiculo).success(function(data){
+			delete vm.veiculo;
+			loadVeiculos();
+		})
+		.error(function(data){
+			console.log(data);
+		});
 
 	}
 
-	buscaVeic();
-
-	function buscaVeic() {
-		VeiculoService.getAll();
+	function removeVeic(veiculo) {
+		VeiculoService.remove(veiculo).success(function(data){
+			console.log("veiculo removido com sucesso!"+data);
+			loadVeiculos();
+		})
+		.error(function(data,status){
+			console.log("erro ao remover", data);
+			console.log("status: ",status);
+		});
 	}
 
-	function buscaTodosVeic() {
+	function alteraVeic(veiculo) {
 
 	}
 
-	function cadVeic() {
 
-	}
 
-	function removeVeic() {
-		
-	}
-
+	loadVeiculos();
 };

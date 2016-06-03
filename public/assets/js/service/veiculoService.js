@@ -1,26 +1,22 @@
 'use strict';
 
 angular.module('dashboard')
-	.factory('VeiculoService', VeiculoService);
+	.service('VeiculoService', VeiculoService);
 
 function VeiculoService($http) {
 
-	var service = {
-		getAll:getAll
-	};
-
-	return service;
-
-	function getAll() {
+	this.getAll = function() {
 		const url = "/api/veiculos";
-		$http.get(url)
-			.then(function(data){
-				console.log(data.data);
-				return data.data;
-			})
-			.catch(function(err){
-				console.log(err);
-			})
+		return $http.get(url);
+	}
 
+	this.insert = function(veiculo) {
+		const url = "/api/veiculo";
+		return $http.post(url,veiculo);
+	}
+
+	this.remove = function(veiculo) {
+		const url = "/api/veiculos/";
+		return $http.delete(url+veiculo._id,{params:{id:veiculo._id}});
 	}
 }

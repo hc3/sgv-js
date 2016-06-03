@@ -9,7 +9,7 @@ angular.module('dashboard',['ngRoute','datatables'])
 			.when('/veiculoList',{
 				templateUrl:"views/listVeiculo.html",
 				controller:"VeiculoController",
-				controllerAs:"VeiculoCtrl"
+				controllerAs:"VeiculoController"
 			})
 			.when('/lubriCad',{
 				templateUrl:"views/cadLubri.html",

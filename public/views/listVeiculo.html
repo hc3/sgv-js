@@ -6,23 +6,23 @@
 				<div class="table-responsive">
 					<table class="table table-bordered table-hover"  datatable="ng">
 						<thead>
+							<th>Motorista</th>
+							<th>Placa</th>
 							<th>Marca</th>
 							<th>Modelo</th>
-							<th>Placa</th>
-							<th>Motorista</th>
 							<th></th>
 							<th></th>
 							<th></th>
 						</thead>
 						<tbody>
 							<tr data-ng-repeat="veiculo in VeiculoController.veiculos">
+								<td>{{veiculo.nome}}</td>
+								<td>{{veiculo.placa}}</td>
 								<td>{{veiculo.marca}}</td>
 								<td>{{veiculo.modelo}}</td>
-								<td>{{veiculo.placa}}</td>
-								<td>{{veiculo.condutor}}</td>
-								<td><a><span class="glyphicon glyphicon-zoom-in"></span></a></td>
-								<td><a><span class="glyphicon glyphicon-pencil"></span></a></td>
-								<td><a><span class="glyphicon glyphicon-trash"></span></a></td>
+								<td><button class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></button></td>
+								<td><button class="btn btn-warning" ng-click="VeiculoController.alteraVeic(veiculo)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+								<td><button class="btn btn-danger" ng-click="VeiculoController.removeVeic(veiculo)"><span class="glyphicon glyphicon-trash"></span></button></td>
 							</tr>
 						</tbody>
 					</table>

@@ -73,8 +73,8 @@ module.exports = function(app) {
 	};
 
 	app.get("/api/veiculos",buscarVeiculos);
-	app.get("/api/veiculos:id",buscarVeiculoPorId);
+	app.get("/api/veiculos/:id",buscarVeiculoPorId);
 	app.post("/api/veiculo",adicionarVeiculo);
-	app.delete("/api/veiculos:id",removeVeiculo);
+	app.delete("/api/veiculos/:id",removeVeiculo);
 
 };

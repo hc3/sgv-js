@@ -18,6 +18,18 @@ module.exports = function(app) {
 		})
 	};
 
+	var buscaWithPopulate = function(req,res) {
+		console.log("GET - /api/lubriPopulate");
+
+		return Lubri.findOne()
+			.populate('Veiculo')
+			.exec(function(err,lubri){
+				if(err) return handleError(err);
+				console.log(lubri.veiculo);
+			});
+
+	}
+
 	var buscaLuvriPorId = function(req,res) {
 
 	};
@@ -59,6 +71,7 @@ module.exports = function(app) {
 		});
 	};
 
+	app.get("/api/lubriPopulate", buscaWithPopulate);
 	app.get("/api/lubri", buscaLuvri);
 	app.get("/api/lubri/:id", buscaLuvriPorId);
 	app.post("/api/lubri", adicionarLubri);

@@ -11,6 +11,7 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	vm.dados = []
 	vm.alteraLub = alteraLub
 	vm.buscaLub = buscaLub;
+	vm.buscaLubWithPopulate = buscaLubWithPopulate;
 	vm.buscaVeiculos = buscaVeiculos;
 	vm.buscaTodasLub = buscaTodasLub;
 	vm.cadLub = cadLub;
@@ -32,6 +33,16 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 				buscaTodasLub();
 			})
 			.error(function(data){
+				console.log(data);
+			})
+	}
+
+	function buscaLubWithPopulate() {
+		LubrificacaoService.getAllWithPopulate()
+			.success(function(data){
+				console.log(data);
+			})
+			.error(function(data) {
 				console.log(data);
 			})
 	}
@@ -69,5 +80,6 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 
 
 	buscaVeiculos();
-	buscaTodasLub()
+	buscaTodasLub();
+	buscaLubWithPopulate();
 };

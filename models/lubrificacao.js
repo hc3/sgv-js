@@ -11,6 +11,7 @@ const _lubrificacao = {
 	},
 	veiculo:{
 		type:Schema.Types.ObjectId,
+		ref:'Veiculo',
 		require:true
 	},
 	custoKm:{

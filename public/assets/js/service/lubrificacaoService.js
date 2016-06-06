@@ -10,6 +10,11 @@ function LubrificacaoService($http) {
 		return $http.get(url);
 	}
 
+	this.getAllWithPopulate = function() {
+		const url = "/api/lubriPopulate";
+		return $http.get(url);
+	}
+
 	this.insert = function(lubrificacao) {
 		const url = "/api/lubri";
 		return $http.post(url,lubrificacao);

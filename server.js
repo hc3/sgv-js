@@ -19,6 +19,7 @@ app.use(methodOverride());                                      // simulate DELE
 
 // routes ===================================================================================================
 var clienteRoute = require('./routes/veiculo.js')(app);
+var lubriRoute = require('./routes/lubrificacao.js')(app);
 
 
 

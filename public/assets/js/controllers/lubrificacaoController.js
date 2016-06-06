@@ -4,11 +4,12 @@
 	angular.module('dashboard')
 		.controller('LubrificacaoController', LubrificacaoController);
 
-function LubrificacaoController(VeiculoService) {
+function LubrificacaoController(VeiculoService,LubrificacaoService) {
 
 	var vm = this;
 	vm.titulo = "";
 	vm.veiculos = [];
+	vm.dados = []
 	vm.alteraLub = alteraLub
 	vm.buscaLub = buscaLub;
 	vm.buscaVeiculos = buscaVeiculos;
@@ -18,13 +19,45 @@ function LubrificacaoController(VeiculoService) {
 
 	function buscaVeiculos() {
 		VeiculoService.getAll().success(function(data){
-			console.log(data);
 			vm.veiculos = data;
 		})
 		.error(function(data,status) {
 			console.log(data);
 		});
 	}
+
+	function cadLub(lubrificacao) {
+		LubrificacaoService.insert(lubrificacao)
+			.success(function(data) {
+				delete vm.dados;
+				buscaTodasLub();
+			})
+			.error(function(data){
+				console.log(data);
+			})
+	}
+
+	function buscaTodasLub() {
+		LubrificacaoService.getAll()
+			.success(function(data){
+				vm.dados = data;
+			})
+			.error(function(data){
+				console.log(data);
+			})
+	}
+
+	function removeLub(lubrificacao) {
+		LubrificacaoService.remove(lubrificacao)
+			.success(function(data){
+				console.log("Lubrificação removida com sucesso!"+data);
+				buscaTodasLub();
+			})
+			.error(function(data,status){
+				console.log("erro ao remover",data);
+				console.log("status",status);
+			})
+	}	
 
 	function alteraLub() {
 
@@ -34,19 +67,10 @@ function LubrificacaoController(VeiculoService) {
 
 	}
 
-	function buscaTodasLub() {
 
-	}
-
-	function cadLub() {
-
-	}
-
-	function removeLub() {
-		
-	}
 
 	buscaVeiculos();
+	buscaTodasLub()
 };
 
 })();

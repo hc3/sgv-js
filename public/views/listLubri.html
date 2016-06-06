@@ -15,14 +15,14 @@
 							<th></th>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="lubri in LubriCtrl.lubrificacoes">
+							<tr data-ng-repeat="lubri in LubriCtrl.dados">
 								<td>{{lubri.veiculo}}</td>
 								<td>{{lubri.custoKm}}</td>
 								<td>{{lubri.mediaKm}}</td>
-								<td>{{lubri.data}}</td>
-								<td><a><span class="glyphicon glyphicon-zoom-in"></span></a></td>
-								<td><a><span class="glyphicon glyphicon-pencil"></span></a></td>
-								<td><a><span class="glyphicon glyphicon-trash"></span></a></td>
+								<td>{{lubri.data | date:'dd-MM-yyyy'}}</td>
+								<td><button class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span></button></td>
+								<td><button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button></td>
+								<td><button class="btn btn-danger" ng-click="LubriCtrl.removeLub(lubri)"><span class="glyphicon glyphicon-trash"></span></button></td>
 							</tr>
 						</tbody>
 					</table>

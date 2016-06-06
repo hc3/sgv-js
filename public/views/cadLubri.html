@@ -14,7 +14,7 @@
 				 	<label>Veiculo</label>
 				  	<select data-ng-model="LubriCtrl.lubri.veiculo" class="form-control">
 				  		<option value="{{ veiculo._id }}" ng-repeat="veiculo in LubriCtrl.veiculos">
-				  			{{veiculo.nome}} - {{veiculo.placa}}
+				  			{{veiculo.placa}}
 				  		</option>
 				  	</select>
 				</br>
@@ -30,7 +30,7 @@
 				  </fieldset>
 
 				  <button class="btn btn-primary" type="sumit" 
-				  ng-click="LubriCtrl.add(LubriCtrl.veiculo)">Cadastrar</button>
+				  ng-click="LubriCtrl.cadLub(LubriCtrl.lubri)">Cadastrar</button>
 				  <button class="btn btn-danger" ng-click="LubriCtrl.limpar()">Cancelar</button>
 				</form>
 				

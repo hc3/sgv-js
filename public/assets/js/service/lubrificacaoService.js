@@ -16,7 +16,7 @@ function LubrificacaoService($http) {
 	}
 
 	this.remove = function(lubrificacao) {
-		const url = "/api/lubri/:id";
+		const url = "/api/lubri/";
 		return $http.delete(url+lubrificacao._id,{params:{id:lubrificacao._id}});
 	}
 

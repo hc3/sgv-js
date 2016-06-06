@@ -1,8 +1,7 @@
-(function() {
-	'use strict';
+'use strict';
 
-	angular.module('dashboard')
-		.controller('LubrificacaoController', LubrificacaoController);
+angular.module('dashboard')
+	.controller('LubrificacaoController', LubrificacaoController);
 
 function LubrificacaoController(VeiculoService,LubrificacaoService) {
 
@@ -72,5 +71,3 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	buscaVeiculos();
 	buscaTodasLub()
 };
-
-})();

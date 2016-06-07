@@ -4,114 +4,128 @@
 <script type="text/javascript">
 $(document).ready(function() {
     //OS DADOS DOS MOTORISTAS VEM DE UMA REQ AJAX
-    var motoristas = [
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.96",data:"JANEIRO"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.80",data:"JANEIRO"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.60",data:"JANEIRO"},
-        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"5.40",data:"JANEIRO"},
-        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.70",data:"JANEIRO"},
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.45",data:"FEVEREIRO"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.88",data:"FEVEREIRO"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.67",data:"FEVEREIRO"},
-        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"5.40",data:"FEVEREIRO"},
-        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.20",data:"FEVEREIRO"},
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"5.69",data:"MARÇO"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"5.35",data:"MARÇO"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.99",data:"MARÇO"},
-        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"6.40",data:"MARÇO"},
-        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.90",data:"MARÇO"},
-        {veiculo:"JOÃO",custoKm:"0,55",mediaKm:"6.10",data:"ABRIL"},
-        {veiculo:"ASTROGILDO",custoKm:"0,60",mediaKm:"4.30",data:"ABRIL"},
-        {veiculo:"RUBÊNCIO",custoKm:"0,57",mediaKm:"5.90",data:"ABRIL"},
-        {veiculo:"GILDEZIO",custoKm:"0,47",mediaKm:"5.60",data:"ABRIL"},
-        {veiculo:"GALDÊNCIO",custoKm:"0,47",mediaKm:"5.88",data:"ABRIL"},
-    ];
+    var motoristas = [ ];
 
-    function exibeMediaConsumoFinal(element,nome) {
-        var mediaKm = [];
-        var nomes = verificaNomes(element);
-        for(var i = 0; i < nomes.length; i++) {
-            for(var i = 0; i < element.length; i++) {
-                if(element[i].veiculo === nome) {
-                    mediaKm.push(parseFloat(element[i].mediaKm));
+    $.ajax({
+
+        url:'http://localhost:3412/api/lubriPopulate',
+        success:function(data) {
+            motoristas = data;
+        }
+    });
+
+    setTimeout(function() {
+
+        function exibeMediaConsumoFinal(element,nome) {
+            var mediaKm = [];
+            var nomes = verificaNomes(element);
+            for(var i = 0; i < nomes.length; i++) {
+                for(var i = 0; i < element.length; i++) {
+                    if(element[i].veiculo.nome === nome) {
+                        mediaKm.push(parseFloat(element[i].mediaKm));
+                    }
                 }
             }
+            return mediaKm;
+        } 
+
+        function verificaNomes(element) {
+            var arr = [];
+            for(var i = 0; i < element.length; i++) {
+                arr.push(element[i].veiculo.nome);
+            }
+            var nomes = arr.filter(function(el,i){
+                return arr.indexOf(el) == i;
+            });
+
+            return nomes;
         }
-        return mediaKm;
-    } 
+     
+        function verificaMesses(element) {
+            var arr = [];
+            for(var i = 0; i < element.length; i++) {
+                arr.push(element[i].data);
+            }
+            var messes = arr.filter(function(el,i) {
+                return arr.indexOf(el) == i;
+            });
 
-    function verificaNomes(element) {
-        var arr = [];
-        for(var i = 0; i < element.length; i++) {
-            arr.push(element[i].veiculo);
+            return messes;
         }
-        var nomes = arr.filter(function(el,i){
-            return arr.indexOf(el) == i;
-        });
 
-        return nomes;
-    }
- 
-    function verificaMesses(element) {
-        var arr = [];
-        for(var i = 0; i < element.length; i++) {
-            arr.push(element[i].data);
-        }
-        var messes = arr.filter(function(el,i) {
-            return arr.indexOf(el) == i;
-        });
-
-        return messes;
-    }
-
-    $('#container').highcharts({
-        title: {
-            text: 'Consumo médio de combustível',
-            x: -20 //center
-        },
-        subtitle: {
-            text: 'Fonte: RN Distribuidora',
-            x: -20
-        },
-        xAxis: {
-            categories: verificaMesses(motoristas)
-        },
-        yAxis: {
+        $('#container').highcharts({
             title: {
-                text: 'Consumo (KM/L)'
+                text: 'Consumo médio de combustível',
+                x: -20 //center
             },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
+            subtitle: {
+                text: 'Fonte: RN Distribuidora',
+                x: -20
+            },
+            xAxis: {
+                categories: verificaMesses(motoristas)
+            },
+            yAxis: {
+                title: {
+                    text: 'Consumo (KM/L)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '°C'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'HUMBERTO SOUZA',
+                data: exibeMediaConsumoFinal(motoristas,"HUMBERTO SOUZA")
+            }, {
+                name: 'JAIR FERREIRA',
+                data: exibeMediaConsumoFinal(motoristas,"JAIR FERREIRA")
+            }, {
+                name: 'HUMBERTO ANDRADE',
+                data: exibeMediaConsumoFinal(motoristas,"HUMBERTO ANDRADE")
+            }, {
+                name: 'FABRICIO PINTO',
+                data: exibeMediaConsumoFinal(motoristas,"FABRICIO PINTO")
+            },  {
+                name: 'AMILTON SANTOS',
+                data: exibeMediaConsumoFinal(motoristas,"AMILTON SANTOS")
+            }, {
+                name: 'AUGUSTO CESAR',
+                data: exibeMediaConsumoFinal(motoristas,"AUGUSTO CESAR")
+            }, {
+                name: 'ROBSON SANTOS',
+                data: exibeMediaConsumoFinal(motoristas,"ROBSON SANTOS")
+            }, {
+                name: 'DIOGO SOARES',
+                data: exibeMediaConsumoFinal(motoristas,"DIOGO SOARES")
+            }, {
+                name: 'ALDALBERTO SANTOS',
+                data: exibeMediaConsumoFinal(motoristas,"ALDALBERTO SANTOS")
+            }, {
+                name: 'JOSE EDSON',
+                data: exibeMediaConsumoFinal(motoristas,"JOSE EDSON")
+            }, {
+                name: 'ARISILVIO ROSA',
+                data: exibeMediaConsumoFinal(motoristas,"ARISILVIO ROSA")
+            }, {
+                name: 'GEORK BARBOSA',
+                data: exibeMediaConsumoFinal(motoristas,"GEORK BARBOSA")
+            }, {
+                name: 'EDMILSON DANTAS',
+                data: exibeMediaConsumoFinal(motoristas,"EDMILSON DANTAS")
             }]
-        },
-        tooltip: {
-            valueSuffix: '°C'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [{
-            name: 'João',
-            data: exibeMediaConsumoFinal(motoristas,"JOÃO")
-        }, {
-            name: 'Astrogildo',
-            data: exibeMediaConsumoFinal(motoristas,"ASTROGILDO")
-        }, {
-            name: 'Rubêncio',
-            data: exibeMediaConsumoFinal(motoristas,"RUBÊNCIO")
-        }, {
-            name: 'Gildezio',
-            data: exibeMediaConsumoFinal(motoristas,"GILDEZIO")
-        },  {
-            name: 'Galdêncio',
-            data: exibeMediaConsumoFinal(motoristas,"GALDÊNCIO")
-        }]
-    });
+        });
+    },1000);
 });
 </script>
 

@@ -11,6 +11,7 @@ function VeiculoController(VeiculoService) {
 	vm.veiculos = [];
 	vm.cadVeic = cadVeic;
 	vm.removeVeic = removeVeic;
+	vm.reset = reset;
 	vm.alteraVeic = alteraVeic;
 	vm.regexPlaca = /[a-z]{3}-?\d{4}/;
 
@@ -23,10 +24,11 @@ function VeiculoController(VeiculoService) {
 		});
 	}
 
-	function cadVeic(veiculo) {
+	function cadVeic(veiculo,form) {
 
 		VeiculoService.insert(veiculo).success(function(data){
 			delete vm.veiculo;
+			reset(form);
 			loadVeiculos();
 		})
 		.error(function(data){
@@ -44,6 +46,14 @@ function VeiculoController(VeiculoService) {
 			console.log("erro ao remover", data);
 			console.log("status: ",status);
 		});
+	}
+
+	function reset(form) {
+		if(form) {
+			form.$setPristine();
+			form.$setUntouched();
+			delete vm.veiculo;
+		}
 	}
 
 	function alteraVeic(veiculo) {

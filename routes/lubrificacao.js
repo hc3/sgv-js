@@ -21,14 +21,15 @@ module.exports = function(app) {
 	var buscaWithPopulate = function(req,res) {
 		console.log("GET - /api/lubriPopulate");
 
-		return Lubri.findOne()
-			.populate('Veiculo')
+		return Lubri.find()
+			.populate('veiculo')
 			.exec(function(err,lubri){
 				if(err) return handleError(err);
-				console.log(lubri.veiculo);
+				return res.send(lubri);
 			});
 
 	}
+
 
 	var buscaLuvriPorId = function(req,res) {
 

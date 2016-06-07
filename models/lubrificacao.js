@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const _lubrificacao = {
 
 	data:{
-		type:Date,
+		type:String,
 		require:true
 	},
 	veiculo:{

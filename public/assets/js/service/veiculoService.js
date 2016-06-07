@@ -10,6 +10,11 @@ function VeiculoService($http) {
 		return $http.get(url);
 	}
 
+	this.getAllWithPopulate = function() {
+		const url = "/api/lubriPopulate";
+		return $http.get(url);
+	}
+
 	this.insert = function(veiculo) {
 		const url = "/api/veiculo";
 		return $http.post(url,veiculo);

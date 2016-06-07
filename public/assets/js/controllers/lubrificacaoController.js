@@ -9,6 +9,7 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	vm.titulo = "";
 	vm.veiculos = [];
 	vm.dados = []
+	vm.reset = reset;
 	vm.alteraLub = alteraLub
 	vm.buscaLub = buscaLub;
 	vm.buscaLubWithPopulate = buscaLubWithPopulate;
@@ -16,6 +17,14 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	vm.buscaTodasLub = buscaTodasLub;
 	vm.cadLub = cadLub;
 	vm.removeLub = removeLub;
+
+	function reset(form) {
+		if(form) {
+			form.$setPristine();
+			form.$setUntouched();
+			delete vm.lubri;
+		}
+	}
 
 	function buscaVeiculos() {
 		VeiculoService.getAll().success(function(data){
@@ -26,10 +35,11 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 		});
 	}
 
-	function cadLub(lubrificacao) {
+	function cadLub(lubrificacao,form) {
 		LubrificacaoService.insert(lubrificacao)
 			.success(function(data) {
-				delete vm.dados;
+				delete vm.lubri;
+				reset(form);
 				buscaTodasLub();
 			})
 			.error(function(data){
@@ -37,16 +47,18 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 			})
 	}
 
+	//NOVA BUSCA COM O POPULATE
 	function buscaLubWithPopulate() {
 		LubrificacaoService.getAllWithPopulate()
 			.success(function(data){
-				console.log(data);
+				vm.dados = data;
 			})
 			.error(function(data) {
 				console.log(data);
 			})
 	}
 
+	//ANTIGA BUSCA SEM O POPULATE
 	function buscaTodasLub() {
 		LubrificacaoService.getAll()
 			.success(function(data){
@@ -80,6 +92,6 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 
 
 	buscaVeiculos();
-	buscaTodasLub();
+	//buscaTodasLub()
 	buscaLubWithPopulate();
 };

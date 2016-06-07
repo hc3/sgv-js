@@ -1,3 +1,17 @@
+<style type="text/css">
+  input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+
+  .myAlert {
+  	background-color: #FFD700;
+  }
+</style>
+
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
@@ -7,23 +21,36 @@
 				<form name="form">
 				  <fieldset class="form-group">
 				    <label>Nome Condutor</label>
-				    <input type="text" class="form-control" ng-required  ng-model="VeiculoController.veiculo.nome">
+				    <input type="text" class="form-control" required name="nomeVeiculo" ng-model="VeiculoController.veiculo.nome">
+				    <div class="myAlert" ng-show="form.$submitted || form.nomeVeiculo.$touched">
+				    	<div ng-show="form.nomeVeiculo.$error.required">Por favor digite o nome do motorista!</div>
+				    </div>
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label>Marca</label>
-				    <input type="text" class="form-control" ng-required  ng-model="VeiculoController.veiculo.marca">
+				    <input type="text" class="form-control" required  name="marcaVeiculo" ng-model="VeiculoController.veiculo.marca">
+				    <div class="myAlert" ng-show="form.$submitted || form.marcaVeiculo.$touched">
+				    	<div ng-show="form.marcaVeiculo.$error.required">Por favor digite a marca do veiculo</div>
+				    </div>
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label>Modelo</label>
-				    <input type="text" class="form-control" ng-required  ng-model="VeiculoController.veiculo.modelo">
+				    <input type="text" class="form-control" required  name="modeloVeiculo" ng-model="VeiculoController.veiculo.modelo">
+				    <div class="myAlert" ng-show="form.$submitted || form.modeloVeiculo.$touched">
+				    	<div ng-show="form.modeloVeiculo.$error.required">Por favor digite a modelo do veiculo</div>
+				    </div>
 				  </fieldset>
 				  <fieldset class="form-group">
 				    <label>Placa</label>
-				    <input type="text" class="form-control" ng-required ng-pattern="VeiculoController.regexPlaca" ng-model="VeiculoController.veiculo.placa">
+				    <input type="text" class="form-control" required name="placaVeiculo" ng-pattern="VeiculoController.regexPlaca" ng-model="VeiculoController.veiculo.placa">
+				    <div class="myAlert" ng-show="form.$submitted || form.placaVeiculo.$touched">
+				    	<div ng-show="form.placaVeiculo.$error.required">Por favor digite a placa do veiculo  </div>
+				    	<div ng-show="form.placaVeiculo.$error.pattern">A placa deve seguir o padrão AAA-9999 ( 3 letras - 4 números )</div>
+				    </div>
 				  </fieldset>
 				  <button class="btn btn-primary" type="sumit" 
-				  ng-click="VeiculoController.cadVeic(VeiculoController.veiculo)">Cadastrar</button>
-				  <button class="btn btn-danger" ng-click="VeiculoController.limpar(VeiculoController.veiculo)">Cancelar</button>
+				  ng-click="VeiculoController.cadVeic(VeiculoController.veiculo,form)" ng-disabled="!form.$valid">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="VeiculoController.reset(form)">Cancelar</button>
 				</form>
 			</div>
 		</div>

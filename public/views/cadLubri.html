@@ -1,3 +1,17 @@
+<style type="text/css">
+  input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+
+  .myAlert {
+  	background-color: #FFD700;
+  }
+</style>
+
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
@@ -5,33 +19,58 @@
 				<h3>Cadastro</h3>
 				{{LubriCtrl.lubri}}
 
-				<form>
+				<form name="form">
 				  <fieldset class="form-group">
 				    <label>Mês Referente</label>
-				    <input type="date" class="form-control" ng-model="LubriCtrl.lubri.data">
+				    <select ng-model="LubriCtrl.lubri.data" class="form-control" required name="mesLub">
+				    	<option value="JANEIRO">JANEIRO</option>
+				    	<option value="FEVEREIRO">FEVEREIRO</option>
+				    	<option value="MARCO">MARÇO</option>
+				    	<option value="ABRIL">ABRIL</option>
+				    	<option value="MAIO">MAIO</option>
+				    	<option value="JUNHO">JUNHO</option>
+				    	<option value="JULHO">JULHO</option>
+				    	<option value="AGOSTO">AGOSTO</option>
+				    	<option value="SETEMBRO">SETEMBRO</option>
+				    	<option value="OUTUBRO">OUTUBRO</option>
+				    	<option value="NOVEMBRO">NOVEMBRO</option>
+				    	<option value="DEZEMBRO">DEZEMBRO</option>
+				    </select>
+				     <div class="myAlert" ng-show="form.$submitted || form.mesLub.$touched">
+				    	<div ng-show="form.mesLub.$error.required">Por favor selecione o mês de referencia</div>
+				    </div>
 				  </fieldset>
 
 				 	<label>Veiculo</label>
-				  	<select data-ng-model="LubriCtrl.lubri.veiculo" class="form-control">
+				  	<select data-ng-model="LubriCtrl.lubri.veiculo" class="form-control" required name="veiculoLub">
 				  		<option value="{{ veiculo._id }}" ng-repeat="veiculo in LubriCtrl.veiculos">
-				  			{{veiculo.placa}}
+				  			{{veiculo.placa}} - {{veiculo.nome}}
 				  		</option>
 				  	</select>
+				  	 <div class="myAlert" ng-show="form.$submitted || form.veiculoLub.$touched">
+				    	<div ng-show="form.veiculoLub.$error.required">Por favor selecione o veiculo</div>
+				    </div>
 				</br>
 
 				  <fieldset class="form-group">
 				    <label>Custo KM</label>
-				    <input type="number" class="form-control" ng-model="LubriCtrl.lubri.custoKm">
+				    <input type="number" class="form-control" ng-model="LubriCtrl.lubri.custoKm" required name="custoLub">
+				     <div class="myAlert" ng-show="form.$submitted || form.custoLub.$touched">
+				    	<div ng-show="form.custoLub.$error.required">Por favor informe o custo do KM</div>
+				    </div>
 				  </fieldset>
 
 				  <fieldset class="form-group">
 				    <label>Média Km/L</label>
-				    <input type="number" class="form-control" ng-model="LubriCtrl.lubri.mediaKm">
+				    <input type="number" class="form-control" ng-model="LubriCtrl.lubri.mediaKm" required name="mediaLub">
+				     <div class="myAlert" ng-show="form.$submitted || form.mediaLub.$touched">
+				    	<div ng-show="form.mediaLub.$error.required">Por favor informe a media de consumo em KM/L</div>
+				    </div>
 				  </fieldset>
 
 				  <button class="btn btn-primary" type="sumit" 
-				  ng-click="LubriCtrl.cadLub(LubriCtrl.lubri)">Cadastrar</button>
-				  <button class="btn btn-danger" ng-click="LubriCtrl.limpar()">Cancelar</button>
+				  ng-click="LubriCtrl.cadLub(LubriCtrl.lubri,form)" ng-disabled="!form.$valid">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="LubriCtrl.reset(form)">Cancelar</button>
 				</form>
 				
 

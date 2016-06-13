@@ -24,7 +24,7 @@ var lubriRoute = require('./routes/lubrificacao.js')(app);
 
 
 // MongoDB configuration ====================================================================================
-mongoose.connect('mongodb://localhost/sgvDB', function(err, res) {
+mongoose.connect('mongodb://<hc3>:<root>@ds025973.mlab.com:25973/sgvdb', function(err, res) {
 	if (err) {
 		console.log('error connecting to MongoDB Database. ' + err);
 	} else {
@@ -33,6 +33,16 @@ mongoose.connect('mongodb://localhost/sgvDB', function(err, res) {
 	}
 });
 
+/**
+mongoose.connect('mongodb://localhost/sgvDB', function(err, res) {
+	if (err) {
+		console.log('error connecting to MongoDB Database. ' + err);
+	} else {
+		console.log('Connected to Database');
+
+	}
+});
+**/
   
 
 // listen (start app with node server.js) ===================================================================

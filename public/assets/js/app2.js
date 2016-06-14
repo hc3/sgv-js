@@ -24,6 +24,11 @@ angular.module('dashboard',['ngRoute','datatables'])
 			.when('/graficos',{
 				templateUrl:"views/graficos.html",
 				controller:"LubrificacaoController",
-				controllerAs:"ChartsController"				
+				controllerAs:"ChartsController"
+			})
+			.when('/arla',{
+				templateUrl:"views/cadArla.html",
+				controller:"arlaController",
+				controllerAs:"arlaController"
 			});
 	});

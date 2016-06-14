@@ -1,0 +1,36 @@
+<style type="text/css">
+  input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+
+  .myAlert {
+  	background-color: #FFD700;
+  }
+</style>
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3>Cadastro</h3>
+				{{VeiculoController.veiculo}}
+				<form name="form">
+				  <fieldset class="form-group">
+				    <label>Data do Abastecimento</label>
+				    <input type="date" class="form-control" required name="nomeVeiculo" ng-model="VeiculoController.veiculo.nome">
+				    <div class="myAlert" ng-show="form.$submitted || form.nomeVeiculo.$touched">
+				    	<div ng-show="form.nomeVeiculo.$error.required">Por favor digite o nome do motorista!</div>
+				    </div>
+				  </fieldset>
+				  <button class="btn btn-primary" type="sumit"
+				  ng-click="VeiculoController.cadVeic(VeiculoController.veiculo,form)" ng-disabled="!form.$valid">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="VeiculoController.reset(form)">Cancelar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

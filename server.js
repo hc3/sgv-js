@@ -20,6 +20,7 @@ app.use(methodOverride());                                      // simulate DELE
 // routes ===================================================================================================
 var clienteRoute = require('./routes/veiculo.js')(app);
 var lubriRoute = require('./routes/lubrificacao.js')(app);
+var arlaRoute = require('./routes/arla.js')(app);
 
 
 
@@ -43,7 +44,7 @@ mongoose.connect('mongodb://localhost/sgvDB', function(err, res) {
 	}
 });
 **/
-  
+
 
 // listen (start app with node server.js) ===================================================================
 app.listen(port);

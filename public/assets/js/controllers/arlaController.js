@@ -21,6 +21,8 @@ angular.module('dashboard')
     };
 
     function cadArla(arla,form) {
+      arla.km_rodado = arla.km_atual - arla.km_anterior;
+      arla.media_consumo = arla.qnt_litros / arla.km_rodado;
       console.log(arla);
       ArlaService.insert(arla)
         .success(function(data){

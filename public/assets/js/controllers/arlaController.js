@@ -21,6 +21,7 @@ angular.module('dashboard')
     };
 
     function cadArla(arla,form) {
+      console.log(arla);
       ArlaService.insert(arla)
         .success(function(data){
           reset(form);

@@ -25,7 +25,7 @@ var arlaRoute = require('./routes/arla.js')(app);
 
 
 // MongoDB configuration ====================================================================================
-mongoose.connect('mongodb://<hc3>:<root>@ds025973.mlab.com:25973/sgvdb', function(err, res) {
+mongoose.connect('mongodb://hc3:root@ds025973.mlab.com:25973/sgvdb', function(err, res) {
 	if (err) {
 		console.log('error connecting to MongoDB Database. ' + err);
 	} else {

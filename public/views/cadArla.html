@@ -11,6 +11,14 @@
              ng-model="arlaController.arla.data_abastecimento">
 				  </fieldset>
 
+					<label>Veiculo</label>
+						<select data-ng-model="arlaController.arla.veiculo" class="form-control" required name="veiculoLub">
+							<option value="{{ veiculo._id }}" ng-repeat="veiculo in arlaController.veiculos">
+								{{veiculo.placa}} - {{veiculo.nome}}
+							</option>
+						</select>
+					</br>
+
           <fieldset class="form-group">
             <label>Km Inicial</label>
             <input type="number" class="form-control" required name="nomeVeiculo"
@@ -28,13 +36,6 @@
             <input type="number" class="form-control" required name="nomeVeiculo"
              ng-model="arlaController.arla.qnt_litros">
           </fieldset>
-
-          <label>Veiculo</label>
-				  	<select data-ng-model="arlaController.arla.veiculo" class="form-control" required name="veiculoLub">
-				  		<option value="{{ veiculo._id }}" ng-repeat="veiculo in arlaController.veiculos">
-				  			{{veiculo.placa}} - {{veiculo.nome}}
-				  		</option>
-				  	</select>
 
           <fieldset class="form-group">
             <label>Valor total</label>

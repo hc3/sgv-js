@@ -6,8 +6,8 @@
 	<!-- angular-datatable css -->
 	<link rel="stylesheet" href="vendor\angular-datatables\dist\css\angular-datatables.css">
 
-	
-	<!-- jquery --> 
+
+	<!-- jquery -->
 	<script src="vendor\jquery\dist\jquery.js"></script>
 	<link rel="stylesheet" href="assets\css\my.css">
 </head>
@@ -34,45 +34,16 @@
 		</nav>
 	<!-- -->
 
-	<!-- MENU LATERAL -->
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-3 col-md-2 sidebar">
-					<ul class="nav nav-sidebar">
-						<li>
-							<a href="javascript:;" data-toggle="collapse" data-target="#demo"
-							class aria-expanded="true">
-								Veiculos
-							</a>
-							<ul id="demo" class="collapse in" aria-expanded="true">
-								<li><a href="#/veiculoCad">Cadastrar</a></li>
-								<li><a href="#/veiculoList">Listar</a></li>
-							</ul>
-						</li>
-						<li>
-							<a>Lubrificação</a>
-							<ul>
-								<li><a href="#/lubriCad">Cadastrar</a></li>
-								<li><a href="#/lubriList">Listar</a></li>
-							</ul>
-						</li>
-						<li class="active"><a href="#/graficos">Gráficos</a></li>
-                    </li>
-					</ul>
-				</div>			
-			</div>
-		</div>
-	<!--  -->
-
+	<menu-lateral></menu-lateral>
 	<!-- CONTEUDO CENTRAL -->
 		<data-ng-view></data-ng-view>
 
 	</div>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 	<script src="//code.angularjs.org/1.5.4/angular-route.js"></script>
 
-	
+
 	<script src="assets\js\app2.js"></script>
 
 	<script src="assets\js\controllers\veiculoController.js"></script>
@@ -81,6 +52,7 @@
 	<script src="assets\js\controllers\lubrificacaoController.js"></script>
 	<script src="assets\js\service\lubrificacaoService.js"></script>
 
+	<script src="assets\js\directivas\menuLateral.js"></script>
 
 	<!-- datatable -->
 	<script src="vendor\datatables\media\js\jquery.dataTables.js"></script>

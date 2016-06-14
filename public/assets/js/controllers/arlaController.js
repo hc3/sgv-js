@@ -10,7 +10,7 @@ angular.module('dashboard')
     vm.veiculos = [];
     vm.reset = reset;
     vm.cadArla = cadArla;
-    vm.buscaAll = buscaAll;
+    vm.buscaArla = buscaArla;
 
     function reset(form){
       if(form) {
@@ -24,7 +24,7 @@ angular.module('dashboard')
       ArlaService.insert(arla)
         .success(function(data){
           reset(form);
-          buscaAll()
+          buscaArla()
         })
         .error(function(data){
           console.log(data);

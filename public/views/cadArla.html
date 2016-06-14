@@ -17,18 +17,55 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3>Cadastro</h3>
-				{{VeiculoController.veiculo}}
+				{{arlaController.arla}}
 				<form name="form">
 				  <fieldset class="form-group">
 				    <label>Data do Abastecimento</label>
-				    <input type="date" class="form-control" required name="nomeVeiculo" ng-model="VeiculoController.veiculo.nome">
-				    <div class="myAlert" ng-show="form.$submitted || form.nomeVeiculo.$touched">
-				    	<div ng-show="form.nomeVeiculo.$error.required">Por favor digite o nome do motorista!</div>
-				    </div>
+				    <input type="date" class="form-control" required name="nomeVeiculo"
+             ng-model="arlaController.arla.data_abastecimento">
 				  </fieldset>
+
+          <fieldset class="form-group">
+            <label>Km Inicial</label>
+            <input type="date" class="form-control" required name="nomeVeiculo"
+             ng-model="arlaController.arla.km_anterior">
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label>Km Atual</label>
+            <input type="date" class="form-control" required name="nomeVeiculo"
+             ng-model="arlaController.arla.km_atual">
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label>Km Rodado</label>
+            <input type="date" class="form-control" required name="nomeVeiculo"
+             ng-model="arlaController.arla.km_rodado">
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label>Litros abastecidos</label>
+            <input type="date" class="form-control" required name="nomeVeiculo"
+             ng-model="arlaController.arla.qnt_litros">
+          </fieldset>
+
+          <label>Veiculo</label>
+				  	<select data-ng-model="arlaController.arla.veiculo" class="form-control" required name="veiculoLub">
+				  		<option value="{{ veiculo._id }}" ng-repeat="veiculo in arlaController.veiculos">
+				  			{{veiculo.placa}} - {{veiculo.nome}}
+				  		</option>
+				  	</select>
+
+          <fieldset class="form-group">
+            <label>Valor total</label>
+            <input type="number" class="form-control" required name="nomeVeiculo"
+             ng-model="arlaController.arla.valor_abastecimento">
+          </fieldset>
+
+
 				  <button class="btn btn-primary" type="sumit"
-				  ng-click="VeiculoController.cadVeic(VeiculoController.veiculo,form)" ng-disabled="!form.$valid">Cadastrar</button>
-				  <button class="btn btn-danger" ng-click="VeiculoController.reset(form)">Cancelar</button>
+				  ng-click="arlaController.cadVeic(arlaController.arla,form)">Cadastrar</button>
+				  <button class="btn btn-danger" ng-click="arlaController.reset(form)">Cancelar</button>
 				</form>
 			</div>
 		</div>

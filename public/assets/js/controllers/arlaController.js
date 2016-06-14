@@ -40,6 +40,16 @@ angular.module('dashboard')
       })
     };
 
+    function buscaVeiculos() {
+      VeiculoService.getAll().success(function(data){
+        vm.veiculos = data;
+      })
+      .error(function(data,status){
+        console.log(data);
+      })
+    }
+
+    buscaVeiculos();
     buscaArla();
 
 }

@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     $.ajax({
 
-        url:'http://localhost:3412/api/lubriPopulate',
+        url:'https://localhost:3412/api/lubriPopulate',
         success:function(data) {
             motoristas = data;
         }
@@ -27,7 +27,7 @@ $(document).ready(function() {
                 }
             }
             return mediaKm;
-        } 
+        }
 
         function verificaNomes(element) {
             var arr = [];
@@ -40,7 +40,7 @@ $(document).ready(function() {
             console.log(nomes);
             return nomes;
         }
-     
+
         function verificaMesses(element) {
             var arr = [];
             for(var i = 0; i < element.length; i++) {
@@ -128,4 +128,3 @@ $(document).ready(function() {
     },1000);
 });
 </script>
-

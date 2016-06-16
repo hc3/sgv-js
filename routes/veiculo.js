@@ -19,7 +19,7 @@ module.exports = function(app) {
 	};
 
 	var buscarVeiculoPorId = function(req,res) {
-		console.log("GET - /API/veiculos:id");
+		console.log("GET - /API/veiculo:id");
 		var id = req.params.id;
 		return Veiculo.findById({_id:id},function(err,veiculo){
 			if(!veiculo) {
@@ -73,7 +73,7 @@ module.exports = function(app) {
 	};
 
 	app.get("/api/veiculos",buscarVeiculos);
-	app.get("/api/veiculos/:id",buscarVeiculoPorId);
+	app.get("/api/veiculo/:id",buscarVeiculoPorId);
 	app.post("/api/veiculo",adicionarVeiculo);
 	app.delete("/api/veiculos/:id",removeVeiculo);
 

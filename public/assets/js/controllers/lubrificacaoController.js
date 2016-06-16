@@ -8,12 +8,14 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	var vm = this;
 	vm.titulo = "";
 	vm.veiculos = [];
+	vm.veiculo = {};
 	vm.dados = []
 	vm.reset = reset;
 	vm.alteraLub = alteraLub
 	vm.buscaLub = buscaLub;
 	vm.buscaLubWithPopulate = buscaLubWithPopulate;
 	vm.buscaVeiculos = buscaVeiculos;
+	vm.buscaVeiculo = buscaVeiculo;
 	vm.buscaTodasLub = buscaTodasLub;
 	vm.cadLub = cadLub;
 	vm.removeLub = removeLub;
@@ -24,6 +26,16 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 			form.$setUntouched();
 			delete vm.lubri;
 		}
+	}
+
+	function buscaVeiculo(id) {
+		VeiculoService.getOne(id).success(function(data){
+			console.log(data);
+			vm.veiculo = data;
+		})
+		.error(function(data) {
+			console.log(data);
+		})
 	}
 
 	function buscaVeiculos() {
@@ -56,6 +68,10 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 			.error(function(data) {
 				console.log(data);
 			})
+	}
+
+	function buscaVeiculoIndividual(id) {
+		console.log(id);
 	}
 
 	//ANTIGA BUSCA SEM O POPULATE
@@ -93,6 +109,5 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 
 
 	buscaVeiculos();
-	//buscaTodasLub()
 	buscaLubWithPopulate();
 };

@@ -10,6 +10,11 @@ function VeiculoService($http) {
 		return $http.get(url);
 	}
 
+	this.getOne = function(id) {
+		const url = "/api/veiculo/";
+		return $http.get(url+id,{params:{id:id}});
+	}
+
 	this.getAllWithPopulate = function() {
 		const url = "/api/lubriPopulate";
 		return $http.get(url);
@@ -26,6 +31,6 @@ function VeiculoService($http) {
 	}
 
 	this.update = function(veiculo) {
-		
+
 	}
 }

@@ -14,6 +14,18 @@ const _lubrificacao = {
 		ref:'Veiculo',
 		require:true
 	},
+	km_inicial:{
+		type:Number,
+		require:true
+	},
+	km_final:{
+		type:Number,
+		require:true
+	},
+	litros_abastecidos:{
+		type:Number,
+		require:true
+	},
 	custoKm:{
 		type:Number,
 		require:true

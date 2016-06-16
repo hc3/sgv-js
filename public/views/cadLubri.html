@@ -42,7 +42,7 @@
 				  </fieldset>
 
 				 	<label>Veiculo</label>
-				  	<select data-ng-model="LubriCtrl.lubri.veiculo" class="form-control" required name="veiculoLub">
+				  	<select data-ng-model="LubriCtrl.lubri.veiculo" ng-change="LubriCtrl.buscaVeiculo(LubriCtrl.lubri.veiculo)" class="form-control" required name="veiculoLub">
 				  		<option value="{{ veiculo._id }}" ng-repeat="veiculo in LubriCtrl.veiculos">
 				  			{{veiculo.placa}} - {{veiculo.nome}}
 				  		</option>
@@ -50,7 +50,20 @@
 				  	 <div class="myAlert" ng-show="form.$submitted || form.veiculoLub.$touched">
 				    	<div ng-show="form.veiculoLub.$error.required">Por favor selecione o veiculo</div>
 				    </div>
-				</br>
+			  	</br>
+
+          <fieldset class="form-group">
+            <label>Km Inicial</label>
+            <input  class="form-control" value="{{LubriCtrl.veiculo.veiculo.km_atual}}" disabled required name="custoLub">
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label>Km Final</label>
+            <input type="number" class="form-control" ng-model="LubriCtrl.lubri.custoKm" required name="custoLub">
+             <div class="myAlert" ng-show="form.$submitted || form.custoLub.$touched">
+              <div ng-show="form.custoLub.$error.required">Por favor informe o custo do KM</div>
+            </div>
+          </fieldset>
 
 				  <fieldset class="form-group">
 				    <label>Custo KM</label>
@@ -68,11 +81,11 @@
 				    </div>
 				  </fieldset>
 
-				  <button class="btn btn-primary" type="sumit" 
+				  <button class="btn btn-primary" type="sumit"
 				  ng-click="LubriCtrl.cadLub(LubriCtrl.lubri,form)" ng-disabled="!form.$valid">Cadastrar</button>
 				  <button class="btn btn-danger" ng-click="LubriCtrl.reset(form)">Cancelar</button>
 				</form>
-				
+
 
 			</div>
 		</div>

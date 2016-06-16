@@ -32,6 +32,10 @@ const _veiculo = {
 	km_aquisisao:{
 		type:Number,
 		require:true
+	},
+	km_atual:{
+		type:Number,
+		require:true
 	}
 }
 

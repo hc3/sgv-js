@@ -25,7 +25,9 @@ function VeiculoController(VeiculoService) {
 	}
 
 	function cadVeic(veiculo,form) {
-
+		if(veiculo.km_atual === undefined || veiculo.km_atual === null) {
+			veiculo.km_atual = veiculo.km_aquisisao;
+		}
 		VeiculoService.insert(veiculo).success(function(data){
 			delete vm.veiculo;
 			reset(form);
@@ -39,7 +41,7 @@ function VeiculoController(VeiculoService) {
 
 	function removeVeic(veiculo) {
 		VeiculoService.remove(veiculo).success(function(data){
-			console.log("veiculo removido com sucesso!"+data);
+
 			loadVeiculos();
 		})
 		.error(function(data,status){

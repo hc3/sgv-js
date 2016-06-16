@@ -12,7 +12,6 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	vm.dados = []
 	vm.reset = reset;
 	vm.alteraLub = alteraLub
-	vm.buscaLub = buscaLub;
 	vm.buscaLubWithPopulate = buscaLubWithPopulate;
 	vm.buscaVeiculos = buscaVeiculos;
 	vm.buscaVeiculo = buscaVeiculo;

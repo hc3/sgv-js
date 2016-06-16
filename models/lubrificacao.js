@@ -34,10 +34,6 @@ const _lubrificacao = {
 		type:Number,
 		require:true
 	},
-	local_abastecimento:{
-		type:String,
-		require:true
-	}
 	custoKm:{
 		type:Number,
 		require:true

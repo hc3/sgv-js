@@ -30,7 +30,6 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 
 	function buscaVeiculo(id) {
 		VeiculoService.getOne(id).success(function(data){
-			console.log(data);
 			vm.veiculo = data;
 		})
 		.error(function(data) {
@@ -70,10 +69,6 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 			})
 	}
 
-	function buscaVeiculoIndividual(id) {
-		console.log(id);
-	}
-
 	//ANTIGA BUSCA SEM O POPULATE
 	function buscaTodasLub() {
 		LubrificacaoService.getAll()
@@ -101,12 +96,6 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	function alteraLub() {
 
 	}
-
-	function buscaLub() {
-
-	}
-
-
 
 	buscaVeiculos();
 	buscaLubWithPopulate();

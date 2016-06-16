@@ -22,10 +22,22 @@ const _lubrificacao = {
 		type:Number,
 		require:true
 	},
+	km_percorrido:{
+		type:Number,
+		require:true
+	},
 	litros_abastecidos:{
 		type:Number,
 		require:true
 	},
+	valor_abastecimento:{
+		type:Number,
+		require:true
+	},
+	local_abastecimento:{
+		type:String,
+		require:true
+	}
 	custoKm:{
 		type:Number,
 		require:true

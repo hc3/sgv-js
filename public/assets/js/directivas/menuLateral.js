@@ -7,5 +7,7 @@ function menuLateral() {
   return {
     restrict:'E',
     templateUrl:'../views/menuLateral.html',
+    controller:'menuController',
+    controllerAs:'menuController'
   }
 }

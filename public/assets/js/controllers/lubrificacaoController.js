@@ -74,12 +74,13 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 			.success(function(data){
 				console.log("Lubrificação removida com sucesso!"+data);
 				buscaTodasLub();
+				buscaLubWithPopulate()
 			})
 			.error(function(data,status){
 				console.log("erro ao remover",data);
 				console.log("status",status);
 			})
-	}	
+	}
 
 	function alteraLub() {
 

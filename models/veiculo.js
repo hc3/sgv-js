@@ -7,7 +7,7 @@ const _veiculo = {
 
 	nome:{
 		type:String,
-		require:true	
+		require:true
 	},
 	marca:{
 		type:String,
@@ -19,6 +19,18 @@ const _veiculo = {
 	},
 	placa:{
 		type:String,
+		require:true
+	},
+	nroChassi:{
+		type:String,
+		require:true
+	},
+	renavam:{
+		type:Number,
+		require:true
+	},
+	km_aquisisao:{
+		type:Number,
 		require:true
 	}
 }

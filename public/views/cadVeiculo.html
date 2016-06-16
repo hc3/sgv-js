@@ -48,7 +48,31 @@
 				    	<div ng-show="form.placaVeiculo.$error.pattern">A placa deve seguir o padrão AAA-9999 ( 3 letras - 4 números )</div>
 				    </div>
 				  </fieldset>
-				  <button class="btn btn-primary" type="sumit" 
+          <fieldset class="form-group">
+            <label>Numero Chassis</label>
+            <input type="text" class="form-control" required name="chassiVeiculo" minlength=17 ng-model="VeiculoController.veiculo.nroChassi">
+            <div class="myAlert" ng-show="form.$submitted || form.chassiVeiculo.$touched">
+              <div ng-show="form.chassiVeiculo.$error.required">Por favor digite a chassi do veiculo  </div>
+              <div ng-show="form.chassiVeiculo.$error.pattern">o chassi deve ter no minimo 17 caracteres</div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label>Renava</label>
+            <input type="number" class="form-control" required name="renavamVeiculo" minlength=11 ng-model="VeiculoController.veiculo.renavam">
+            <div class="myAlert" ng-show="form.$submitted || form.renavamVeiculo.$touched">
+              <div ng-show="form.renavamVeiculo.$error.required">Por favor digite a renavam do veiculo  </div>
+              <div ng-show="form.renavamVeiculo.$error.pattern">o renavam deve ter no minimo 11 caracteres</div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label>KM de Aquisição</label>
+            <input type="number" class="form-control" required name="kmAquisisao" ng-model="VeiculoController.veiculo.km_aquisisao">
+            <div class="myAlert" ng-show="form.$submitted || form.kmAquisisao.$touched">
+              <div ng-show="form.kmAquisisao.$error.required">Por favor digite o km de aquisição do veiculo  </div>
+              <div ng-show="form.kmAquisisao.$error.pattern">o km de aquisição precisa ser informado</div>
+            </div>
+          </fieldset>
+				  <button class="btn btn-primary" type="sumit"
 				  ng-click="VeiculoController.cadVeic(VeiculoController.veiculo,form)" ng-disabled="!form.$valid">Cadastrar</button>
 				  <button class="btn btn-danger" ng-click="VeiculoController.reset(form)">Cancelar</button>
 				</form>

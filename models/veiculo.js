@@ -21,6 +21,16 @@ const _veiculo = {
 		type:String,
 		require:true
 	},
+	tipo_combustivel:{
+		descricao:{
+			type:String,
+			require:true
+		},
+		valor:{
+			type:Number,
+			require:true
+		}
+	},
 	nroChassi:{
 		type:String,
 		require:true

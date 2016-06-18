@@ -18,6 +18,7 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 	vm.buscaTodasLub = buscaTodasLub;
 	vm.cadLub = cadLub;
 	vm.removeLub = removeLub;
+	vm.calculaKM = calculaKM;
 
 	function reset(form) {
 		if(form) {
@@ -27,9 +28,13 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 		}
 	}
 
+	function calculaKM(inicial,final) {
+		vm.lubri.km_percorrido = final - inicial;
+	}
+
 	function buscaVeiculo(id) {
 		VeiculoService.getOne(id).success(function(data){
-			vm.veiculo = data;
+			vm.lubri.km_inicial = data.veiculo.km_atual;
 		})
 		.error(function(data) {
 			console.log(data);
@@ -83,7 +88,6 @@ function LubrificacaoController(VeiculoService,LubrificacaoService) {
 		LubrificacaoService.remove(lubrificacao)
 			.success(function(data){
 				console.log("Lubrificação removida com sucesso!"+data);
-				buscaTodasLub();
 				buscaLubWithPopulate()
 			})
 			.error(function(data,status){

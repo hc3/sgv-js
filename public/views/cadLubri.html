@@ -22,6 +22,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				{{LubriCtrl.lubri}}
+        {{LubriCtrl.lubri.km_inicial}}
 				<form name="form">
           <div class="row">
             <div class="col-lg-6">
@@ -48,7 +49,8 @@
             </div>
             <div class="col-lg-6">
               <label>Veiculo</label>
-                <select data-ng-model="LubriCtrl.lubri.veiculo" ng-change="LubriCtrl.buscaVeiculo(LubriCtrl.lubri.veiculo)" class="form-control" required name="veiculoLub">
+                <select data-ng-model="LubriCtrl.lubri.veiculo" ng-change="LubriCtrl.buscaVeiculo(LubriCtrl.lubri.veiculo)"
+                 class="form-control" required name="veiculoLub">
                   <option value="{{ veiculo._id }}" ng-repeat="veiculo in LubriCtrl.veiculos">
                     {{veiculo.placa}} - {{veiculo.nome}}
                   </option>
@@ -57,19 +59,22 @@
                   <div ng-show="form.veiculoLub.$error.required">Por favor selecione o veiculo</div>
                 </div>
             </div>
+          </br>
           </div>
           <div class="row">
             <div class="col-xs-6 col-sm-4">
               <fieldset class="form-group">
                 <label>Km Anterior</label>
-                <input  class="form-control"  data-ng-model="LubriCtrl.lubri.km_inicial"
-                value="{{LubriCtrl.veiculo.veiculo.km_atual}}" disabled required>
+                <input  type="number" class="form-control" ng-model="LubriCtrl.lubri.km_inicial"
+                value="{{LubriCtrl.lubri.km_inicial}}" disabled required>
               </fieldset>
             </div>
             <div class="col-xs-6 col-sm-4">
               <fieldset class="form-group">
                 <label>Km Final</label>
-                <input type="number" class="form-control" ng-model="LubriCtrl.lubri.km_final" required name="kmFinal">
+                <input type="number" class="form-control"
+                ng-change="LubriCtrl.calculaKM(LubriCtrl.lubri.km_inicial,LubriCtrl.lubri.km_final)"
+                ng-model="LubriCtrl.lubri.km_final" required name="kmFinal">
                  <div class="myAlert" ng-show="form.$submitted || form.kmFinal.$touched">
                   <div ng-show="form.kmFinal.$error.required">Por favor informe o custo do KM</div>
                 </div>
@@ -77,9 +82,9 @@
               </div>
             <div class="col-xs-6 col-sm-4">
               <fieldset class="form-group">
-                <label>Km Percorrido</label>
+                <label>Km Rodado</label>
                 <input type="number" class="form-control" ng-model="LubriCtrl.lubri.km_percorrido"
-                value="{{LubriCtrl.lubri.km_final - LubriCtrl.lubri.km_inicial}}" disabled required>
+                value="{{LubriCtrl.lubri.km_percorrido}}" disabled required>
               </fieldset>
             </div>
           </div>
